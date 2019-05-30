@@ -1,6 +1,8 @@
 package core.managers;
 
 import api.android.Android;
+import api.apps.nw.registration.confirmEmail.ConfirmEmail;
+import api.apps.nw.registration.personalInformation.PersonalInformation;
 import core.ADB;
 import core.MyLogger;
 import io.appium.java_client.android.AndroidDriver;
@@ -22,6 +24,8 @@ public class DriverManager {
     private static HashMap<String, URL> hosts;
     private static String unlockPackage = "io.appium.unlock";
     private static Properties prop = new Properties();
+    private static String urlNubiToConfirm = "http://tunubi.app/registration/confirm/";
+
 
     public static int EXPLICIT_WAIT_TIME;
     public static int IMPLICIT_WAIT_TIME;
@@ -77,7 +81,9 @@ public class DriverManager {
             if(!apps.contains(unlockPackage)){
                 availableDevices.add(device);
             }else{
-                System.out.println("Device: " + device + " has "+unlockPackage+" already installed");
+                //System.out.println("Device: " + device + " has "+unlockPackage+" already installed");
+
+                availableDevices.add(device);
             }
         }
         if(availableDevices.size() == 0) throw new RuntimeException("Not a device available for test");
@@ -89,6 +95,7 @@ public class DriverManager {
         for (String device: devices){
             try{
                 Android.driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), getCaps(device));
+               // Android.driver.closeApp();
                 Android.adb = new ADB(device);
                 break;
             }catch (Exception e){
@@ -97,7 +104,16 @@ public class DriverManager {
 
         }
 
-        //Android.driver.pressKey(AndroidKey.ENTER);
+
+    }
+
+    public ConfirmEmail iConfirmEmailFromDB(String token){
+
+            //Thread.sleep(300);
+            Android.driver.get(urlNubiToConfirm+token);
+
+
+        return Android.app.nubiWallet.confirmEmail;
     }
 
     public static void killDriver(){

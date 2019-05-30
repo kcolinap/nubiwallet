@@ -28,6 +28,15 @@ public class Home implements Activity {
         }
     }
 
+    public Home setPassword(String password){
+        try{
+            uiObject.txtPassword().typeText(password);
+            return Android.app.nubiWallet.home;
+        }catch (AssertionError e){
+            throw new AssertionError("Failed to set password");
+        }
+    }
+
     public Email tapLinkRegister(){
         try {
             uiObject.lnkRegister().tap();
