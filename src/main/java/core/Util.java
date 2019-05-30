@@ -11,6 +11,10 @@ public class Util {
     private ConnectionDB connectionDB = new ConnectionDB();
     private String email;
 
+
+    /************
+     *  GENERATE RANDOM NUMBER
+     ***********/
     public int generateRamdonNumber(int lenght){
         int numberGenerated;
         switch (lenght){
@@ -31,6 +35,9 @@ public class Util {
                 break;
             case 6:
                 numberGenerated = (int)(1000000 * Math.random());
+                break;
+            case 7:
+                numberGenerated = (int)(10000000 * Math.random());
                 break;
             case 8:
                 numberGenerated = (int)(100000000 * Math.random() +1);
@@ -74,5 +81,9 @@ public class Util {
         connectionDB.closeConecction();
         return resultQuery;
     }
+
+
+
+
 
 }
