@@ -220,7 +220,13 @@ public class NWE2E001RegistrationTest {
 
             digit = Character.toString(auxSmsCode[3]);
             nubiWallet.phoneNumber.setFourthDigitCode(digit);
-            
+
+            /*****************************************************
+             * pin screen
+             */
+
+
+
 
         }catch (Exception e){
             e.printStackTrace();
