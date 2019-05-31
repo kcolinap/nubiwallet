@@ -4,11 +4,15 @@ import api.android.Android;
 import api.apps.nw.NubiWallet;
 import core.Util;
 import core.managers.DriverManager;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import core.CommonActions;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 
 public class NWE2E001RegistrationTest {
 
@@ -20,11 +24,15 @@ public class NWE2E001RegistrationTest {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
+    @Before
+    public void beforeMethod() throws Exception{
+        System.out.println("opening nubi wallet app");
+        //commonActions.waitForActivity("com.nubi.featuresplash.view.SplashActivity", 30);
+    }
+
     @Given("That nubi wallet app is running for endToend process")
     public void that_nubi_wallet_app_is_running() throws Exception{
-        System.out.println("opening nubi wallet app");
-        commonActions.waitForActivity("com.nubi.featuresplash.view.SplashActivity", 30);
-        nubiWallet.open();
+        //nubiWallet.open();
         nubiWallet.home.waitToLoad();
     }
 
@@ -291,12 +299,16 @@ public class NWE2E001RegistrationTest {
 
             Thread.sleep(500);
 
-            //Close app
-            commonActions.resetApp();
+
 
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @After
+    public void afterMethod(){
+        Android.driver.resetApp();
     }
 
 }
