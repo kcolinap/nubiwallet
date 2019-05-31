@@ -11,7 +11,7 @@ public class Pin implements Activity {
     @Override
     public Pin waitToLoad() {
         try{
-            uiObject.inputFirstDigitPin().waitToAppear(30);
+            uiObject.textTitle().waitToAppear(30);
             return Android.app.nubiWallet.pin;
         }catch (AssertionError e){
             throw new AssertionError("Pin screen activity failed to load/open");

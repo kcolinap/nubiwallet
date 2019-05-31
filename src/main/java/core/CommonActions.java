@@ -4,7 +4,7 @@ import api.android.Android;
 import api.apps.nw.registration.personalInformation.PersonalInformation;
 import com.github.javafaker.Faker;
 import core.Util;
-import org.omg.CORBA.PUBLIC_MEMBER;
+//import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.io.IOException;
 import java.sql.SQLException;
