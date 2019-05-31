@@ -10,5 +10,5 @@ Feature: Registration process
      And Personal information screen is completed
      And Create user screen is completed
       And Phone number screen is completed
-#      And Terms and conditions screen is completed e2e
-#      Then User sees the welcome screen with its name e2e
+     And Terms and conditions screen is completed
+#      Then User sees the welcome screen with its name e2e. this is failing at tihis moment 31-05-2019

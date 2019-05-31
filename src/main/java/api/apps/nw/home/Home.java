@@ -1,6 +1,7 @@
 package api.apps.nw.home;
 
 import api.android.Android;
+import api.apps.nw.dashboard.Dashboard;
 import api.apps.nw.registration.email.Email;
 import api.interfaces.Activity;
 import core.MyLogger;
@@ -43,6 +44,15 @@ public class Home implements Activity {
             return Android.app.nubiWallet.email;
         }catch (AssertionError e){
             throw new AssertionError("Unable to tab link register");
+        }
+    }
+
+    public Dashboard tapInitSession(){
+        try {
+            uiObject.btnInitSession().tap();
+            return Android.app.nubiWallet.dashboard;
+        }catch (AssertionError e){
+            throw new AssertionError("Unable to tab init session button");
         }
     }
 

@@ -16,6 +16,7 @@ public class Runner {
             DriverManager.createDriver();
 
             JUnitCore.runClasses(Registration.class);
+            JUnitCore.runClasses(Login.class);
 
         }catch (Exception e){
             e.printStackTrace();

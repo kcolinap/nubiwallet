@@ -1,12 +1,15 @@
 package api.apps.nw;
 
 import api.android.Android;
+import api.apps.nw.dashboard.Dashboard;
 import api.apps.nw.home.Home;
 import api.apps.nw.registration.confirmEmail.ConfirmEmail;
 import api.apps.nw.registration.cuil.Cuil;
 import api.apps.nw.registration.email.Email;
 import api.apps.nw.registration.personalInformation.PersonalInformation;
 import api.apps.nw.registration.phonenumber.PhoneNumber;
+import api.apps.nw.registration.pin.Pin;
+import api.apps.nw.registration.termsandconditions.TermsAndConditions;
 import api.apps.nw.registration.userInformation.UserInformation;
 import api.interfaces.Application;
 
@@ -19,10 +22,14 @@ public class NubiWallet implements Application {
     public UserInformation userInformation = new UserInformation();
     public Cuil cuil = new Cuil();
     public PhoneNumber phoneNumber = new PhoneNumber();
+    public Pin pin = new Pin();
+    public TermsAndConditions termConditions = new TermsAndConditions();
+    public Dashboard dashboard = new Dashboard();
 
 
     @Override
     public void forceStop() {
+
         Android.adb.forceStopApp(packageID());
     }
 

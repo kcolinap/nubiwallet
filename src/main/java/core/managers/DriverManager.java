@@ -119,7 +119,7 @@ public class DriverManager {
     public static void killDriver(){
         if(Android.driver != null){
             Android.driver.quit();
-            Android.adb.uninstallApp(unlockPackage);
+            Android.adb.uninstallApp("com.tunubi.wallet");
         }else{
             System.out.println("Driver was not initialized");
         }

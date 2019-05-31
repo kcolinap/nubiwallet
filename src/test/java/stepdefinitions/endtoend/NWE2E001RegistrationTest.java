@@ -21,8 +21,10 @@ public class NWE2E001RegistrationTest {
 
 
     @Given("That nubi wallet app is running for endToend process")
-    public void that_nubi_wallet_app_is_running_for_e2e() throws Exception{
+    public void that_nubi_wallet_app_is_running() throws Exception{
         System.out.println("opening nubi wallet app");
+        commonActions.waitForActivity("com.nubi.featuresplash.view.SplashActivity", 30);
+        nubiWallet.open();
         nubiWallet.home.waitToLoad();
     }
 
@@ -49,9 +51,16 @@ public class NWE2E001RegistrationTest {
 
             status = nubiWallet.email.isEnabledNextButton();
             Assert.assertEquals(true, status);
-            nubiWallet.email.tapButtonNext();
+
+            boolean isButtonNextPresent;
+            do{
+                nubiWallet.email.tapButtonNext();
+                Thread.sleep(600);
+                isButtonNextPresent = nubiWallet.email.uiObject.buttonNext().exists();
+            }while (isButtonNextPresent);
 
 
+            Thread.sleep(300);
             //////////////////////////////////////////////////////////
 
             //Confirm email screen
@@ -180,7 +189,7 @@ public class NWE2E001RegistrationTest {
     public void phone_number_screen_complete(){
         try {
 
-            String phoneNumber, digit;
+            String phoneNumber, digit, pin;
             boolean existPhone;
 
             nubiWallet.phoneNumber.waitToLoad();
@@ -221,12 +230,69 @@ public class NWE2E001RegistrationTest {
             digit = Character.toString(auxSmsCode[3]);
             nubiWallet.phoneNumber.setFourthDigitCode(digit);
 
+            Thread.sleep(800);
             /*****************************************************
              * pin screen
-             */
+             *******/
+
+            //Wait for pin screen
+            nubiWallet.pin.waitToLoad();
+
+            //Set pin
+            do{
+                pin = String.valueOf(util.generateRamdonNumber(4));
+            }while (pin.length()<4);
+
+            char[] codePin = {pin.charAt(0), pin.charAt(1), pin.charAt(2), pin.charAt(3)};
+
+            digit = Character.toString(codePin[0]);
+            nubiWallet.pin.setFirstDigitPin(digit);
+
+            digit = Character.toString(codePin[1]);
+            nubiWallet.pin.setSecondDigitPin(digit);
+
+            digit = Character.toString(codePin[2]);
+            nubiWallet.pin.setThirdDigitPin(digit);
+
+            digit = Character.toString(codePin[3]);
+            nubiWallet.pin.setFourthDigitPin(digit);
+
+            commonActions.hideKeyBoard();
+
+            Assert.assertEquals(true, nubiWallet.pin.uiObject.btnCirclenext().isEnabled());
+            nubiWallet.pin.tapCircleButton();
 
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    @And("Terms and conditions screen is completed")
+    public void terms_and_conditions_screen(){
+        try {
+
+            //Wait for terms and conditions screen
+            nubiWallet.termConditions.waitToLoad();
+
+            //Validate check button terms and conditios is unchecked
+            Assert.assertEquals(false, nubiWallet.termConditions.uiObject.checkBoxTerms().isChecked());
+
+            //tap on check button terms and conditions
+            nubiWallet.termConditions.tapCheckTermsAndConditions();
+
+            Thread.sleep(400);
+
+            //Validate create accoun button is enabled
+            Assert.assertEquals(true, nubiWallet.termConditions.uiObject.buttonCreateAccount().isEnabled());
+
+            //tap create accoun button
+            nubiWallet.termConditions.tapCreateAccountButton();
+
+            Thread.sleep(500);
+
+            //Close app
+            commonActions.resetApp();
 
         }catch (Exception e){
             e.printStackTrace();
