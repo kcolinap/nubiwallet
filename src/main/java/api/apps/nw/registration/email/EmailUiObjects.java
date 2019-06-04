@@ -9,7 +9,8 @@ public class EmailUiObjects {
     private static UiObject
             inputEmail,
             buttonBack,
-            buttonNext;
+            buttonNext,
+    labelNoValidFormat;
 
     public UiObject inputEmail(){
         if(inputEmail == null)inputEmail = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/emailInput").makeUiObject();
@@ -24,5 +25,10 @@ public class EmailUiObjects {
     public UiObject buttonNext(){
         if(buttonNext == null)buttonNext = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/nextButton").makeUiObject();
         return buttonNext;
+    }
+
+    public UiObject labelNoValidFormat(){
+        if(labelNoValidFormat == null)labelNoValidFormat = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/textinput_error").makeUiObject();
+        return labelNoValidFormat;
     }
 }

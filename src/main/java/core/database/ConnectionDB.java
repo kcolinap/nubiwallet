@@ -55,7 +55,8 @@ public class ConnectionDB {
         stmt = connection.createStatement();
         rs = stmt.executeQuery(query);
 
-        while (rs.next()) return rs.getString(field);
+        while (rs.next())
+            return rs.getString(field);
 
         return rs.getString(1);
     }

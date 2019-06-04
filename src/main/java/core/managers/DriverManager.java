@@ -41,7 +41,7 @@ public class DriverManager {
     public static void loadConfigProp(String propertyFileName) throws IOException {
 
         String userDir = System.getProperty("user.dir");
-        FileInputStream fis = new FileInputStream(userDir + "\\src\\main\\Resources\\properties\\"+propertyFileName);
+        FileInputStream fis = new FileInputStream(userDir + "\\src\\main\\resources\\properties\\"+propertyFileName);
         prop.load(fis);
 
         EXPLICIT_WAIT_TIME = Integer.parseInt(prop.getProperty("explicit.wait"));

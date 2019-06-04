@@ -2,8 +2,7 @@ package core;
 
 import core.database.ConnectionDB;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 
 public class Util {
@@ -83,7 +82,56 @@ public class Util {
     }
 
 
+    /****
+     * Write on file
+     */
+    public void writeOnFile(String email, String user, String pass){
+        try{
+/*
+            String useDir = System.getProperty("user.dir");
+            File file = new File(useDir+"\\src\\main\\resources\\user.txt");
+            BufferedWriter bufferedWriter;
+            if(file.exists()){
+                bufferedWriter = new BufferedWriter(new FileWriter(file));
+                bufferedWriter.write("Email: "+email);
+                bufferedWriter.write("User: "+user);
+                bufferedWriter.write("Password: "+pass);
+            }else{
+                bufferedWriter = new BufferedWriter(new FileWriter(file));
+                bufferedWriter.write("Email: "+email);
+                bufferedWriter.write("User: "+user);
+                bufferedWriter.write("Password: "+pass);
+            }
 
+            bufferedWriter.close();*/
+
+            String useDir = System.getProperty("user.dir");
+            FileWriter file = null;
+            PrintWriter pw = null;
+
+            try{
+                file = new FileWriter(useDir+"\\src\\main\\resources\\user.txt");
+                pw = new PrintWriter(file);
+
+                pw.println(user);
+                pw.println(email);
+                pw.print(pass);
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                try{
+                    if(file!=null){
+                        file.close();
+                    }
+                }catch (Exception e2){
+                    e2.printStackTrace();
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 }

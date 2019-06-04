@@ -13,13 +13,16 @@ import core.CommonActions;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class NWE2E001RegistrationTest {
 
     private Util util = new Util();
     private CommonActions commonActions = new CommonActions();
     private DriverManager driverManager = new DriverManager();
-    private static String email;
+    private static String email, user, pass;
+    boolean aux = false;
+
 
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
@@ -36,6 +39,7 @@ public class NWE2E001RegistrationTest {
         nubiWallet.home.waitToLoad();
     }
 
+    @Test
     @When("Email screen is completed")
     public void email_screen_is_completed() throws Exception{
         try{
@@ -159,8 +163,7 @@ public class NWE2E001RegistrationTest {
     public void create_user_screen_complete(){
         try{
 
-            String user, pass;
-            boolean existUser, aux;
+            boolean existUser;
 
             //Waitcreate user screen
             nubiWallet.userInformation.waitToLoad();
@@ -169,11 +172,12 @@ public class NWE2E001RegistrationTest {
             do{
                 user = "user"+util.generateRamdonNumber(4);
                 existUser = commonActions.existUser(user);
-            }while (existUser && user.length()<4);
+            }while (existUser || user.length()<4);
 
             nubiWallet.userInformation.setUser(user);
 
             //Set password
+
            do{
                do{
                    pass = commonActions.passwordGenerator();
@@ -181,9 +185,11 @@ public class NWE2E001RegistrationTest {
 
                nubiWallet.userInformation.setPassword(pass);
                commonActions.hideKeyBoard();
+               Thread.sleep(300);
                aux = nubiWallet.userInformation.uiObject.btnCirclenext().isEnabled();
+               Thread.sleep(300);
 
-           }while (!aux);
+           }while (aux==false);
 
            Assert.assertEquals(true, nubiWallet.userInformation.uiObject.btnCirclenext().isEnabled());
            nubiWallet.userInformation.tapCircleButton();
@@ -214,6 +220,7 @@ public class NWE2E001RegistrationTest {
             nubiWallet.phoneNumber.setNumber(phoneNumber);
 
             commonActions.hideKeyBoard();
+            Thread.sleep(300);
 
             Assert.assertEquals(true, nubiWallet.phoneNumber.uiObject.btnCirclenext().isEnabled());
 
@@ -298,6 +305,10 @@ public class NWE2E001RegistrationTest {
             nubiWallet.termConditions.tapCreateAccountButton();
 
             Thread.sleep(500);
+
+
+            //Write created user on a file
+            //util.writeOnFile(email, user, pass);
 
 
 

@@ -1,6 +1,7 @@
 package api.apps.nw.registration.confirmEmail;
 
 import api.android.Android;
+import api.apps.nw.registration.email.Email;
 import api.apps.nw.registration.personalInformation.PersonalInformation;
 import api.interfaces.Activity;
 
@@ -26,4 +27,22 @@ public class ConfirmEmail implements Activity {
             throw new AssertionError("Unable to tab button Open mail");
         }
     }
+
+    public Email tapButtonBack(){
+        try {
+            uiObject.buttonBack().tap();
+            return Android.app.nubiWallet.email;
+        }catch (AssertionError e){
+            throw new AssertionError("Unable to tab button back");
+        }
+    }
+    public Email tapButtonUpdate(){
+        try {
+            uiObject.buttonUpdateMail().tap();
+            return Android.app.nubiWallet.email;
+        }catch (AssertionError e){
+            throw new AssertionError("Unable to tab button update");
+        }
+    }
+
 }

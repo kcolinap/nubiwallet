@@ -1,4 +1,4 @@
-package suite.e2e;
+package suite.regression;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
@@ -9,12 +9,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src\\test\\resources\\features\\e2e\\F1registration.feature",
-        glue = "stepdefinitions\\endtoend\\",
+        features = "src\\test\\resources\\features\\regression\\registration\\",
+        glue = "stepdefinitions\\regression\\",
         strict = true,
         monochrome = true
 )
-public class Registration {
+public class RegistrationRegexTest {
 
 
 }
