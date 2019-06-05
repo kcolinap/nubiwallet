@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src\\test\\resources\\features\\e2e\\F2login.feature",
         glue = "stepdefinitions\\endtoend\\",
+        tags = "@e2e",
         strict = true,
         monochrome = true
 )

@@ -4,7 +4,7 @@ import core.managers.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.runner.JUnitCore;
 import suite.e2e.*;
-import suite.regression.RegistrationRegexTest;
+import suite.regression.*;
 
 import java.net.MalformedURLException;
 
@@ -21,6 +21,7 @@ public class Runner {
             switch (opt){
                 case "r":
                     JUnitCore.runClasses(RegistrationRegexTest.class);
+                    JUnitCore.runClasses(LoginRegexTest.class);
                     break;
                 case "e":
                     JUnitCore.runClasses(Registration.class);

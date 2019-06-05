@@ -1,3 +1,4 @@
+@e2e
 Feature: Login process
 
   Background:

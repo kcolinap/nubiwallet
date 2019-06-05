@@ -188,7 +188,6 @@ public class CommonActions {
     public void resetApp(){
         try {
             Android.driver.resetApp();
-            //Android.driver.closeApp();
         }catch (Exception e){
             System.out.println("Unable to reset the app");
         }

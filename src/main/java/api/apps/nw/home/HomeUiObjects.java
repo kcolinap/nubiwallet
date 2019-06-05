@@ -11,11 +11,17 @@ public class HomeUiObjects {
             txtPass,
             btnInitSession,
             lnkRegister,
-            lnkForgotPass;
+            lnkForgotPass,
+            lblWrongData;
 
     public UiObject txtUser(){
         if(txtUser == null)txtUser = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/userInput").makeUiObject();
         return txtUser;
+    }
+
+    public UiObject lblWrongData(){
+        if(lblWrongData == null)lblWrongData = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/textinput_error").makeUiObject();
+        return lblWrongData;
     }
 
     public UiObject txtPassword(){

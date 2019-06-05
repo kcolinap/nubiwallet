@@ -8,6 +8,7 @@ Feature: Email screen regression test.
     When User set an email as "<email>"
     Then Validate condition on next button as "<condition>"
     Then Validate if legend is present as "<legend>"
+    Then Reset app
     Examples:
     |      email      |   condition   |   legend  |
     | testdominio.com |     false     |     f     |
@@ -21,6 +22,7 @@ Feature: Email screen regression test.
     When User set an email with more than permit characteres
     Then Validate condition on next button as "false"
     Then Validate if legend is present as "t"
+    Then Reset app
 
   Scenario: Email screen test with a valid email
     #Given That nubi wallet app is running
@@ -28,6 +30,7 @@ Feature: Email screen regression test.
     Then Validate condition on next button as "true"
     And Click on next button
     Then Validate elements on next screen
+    Then Reset app
 
   Scenario: Back to set email screen
    # Given That nubi wallet app is running
@@ -36,6 +39,7 @@ Feature: Email screen regression test.
     And Click on back button
     Then Validate that previous setted email is show
     Then Validate condition on next button as "true"
+    Then Reset app
 
   Scenario: edit the previous email from back button
    # Given That nubi wallet app is running
@@ -46,6 +50,7 @@ Feature: Email screen regression test.
     Then Validate condition on next button as "true"
     And Click on next button
     Then Validate that newest setted email is show
+    Then Reset app
 
   Scenario: edit the previous email from update button
    # Given That nubi wallet app is running
@@ -56,6 +61,7 @@ Feature: Email screen regression test.
     Then Validate condition on next button as "true"
     And Click on next button
     Then Validate that newest setted email is show
+    Then Reset app
 #
 #  Scenario: open  and confirm email test
 #    #Given That nubi wallet app is running

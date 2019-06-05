@@ -27,11 +27,6 @@ public class NWE2E001RegistrationTest {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
-    @Before
-    public void beforeMethod() throws Exception{
-        System.out.println("opening nubi wallet app");
-        //commonActions.waitForActivity("com.nubi.featuresplash.view.SplashActivity", 30);
-    }
 
     @Given("That nubi wallet app is running for endToend process")
     public void that_nubi_wallet_app_is_running() throws Exception{

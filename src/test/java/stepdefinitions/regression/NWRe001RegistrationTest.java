@@ -22,21 +22,13 @@ public class NWRe001RegistrationTest {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
-
-    @Before
-    public void beforeMethod() throws Exception{
+    @Test
+    @Given("That nubi wallet app is running and user is on email screen")
+    public void that_nubi_wallet_app_is_running() throws Exception{
         System.out.println("opening nubi wallet app");
         nubiWallet.home.waitToLoad();
         nubiWallet.home.tapLinkRegister();
 
-        //Email screen
-        nubiWallet.email.waitToLoad();
-
-    }
-
-    @Test
-    @Given("That nubi wallet app is running and user is on email screen")
-    public void that_nubi_wallet_app_is_running() throws Exception{
         //Email screen
         nubiWallet.email.waitToLoad();
     }
@@ -101,6 +93,8 @@ public class NWRe001RegistrationTest {
             }
 
             nubiWallet.email.setEmail(texto);
+            Android.driver.hideKeyboard();
+            Thread.sleep(400);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -250,9 +244,9 @@ public class NWRe001RegistrationTest {
         }
     }
 
-    @After
-    public void afterMethod(){
-        Android.driver.resetApp();
+    @Then("Reset app")
+    public void resetApp(){
+        commonActions.resetApp();
     }
 
 }

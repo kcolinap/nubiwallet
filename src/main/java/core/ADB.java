@@ -8,7 +8,8 @@ public class ADB {
 
     private String ID;
 
-    public ADB(String deviceID){ID = deviceID;}
+    public ADB(String deviceID){
+        ID = deviceID;}
 
     public static String command(String command){
         //MyLogger.log.debug("Formatting ADB Command: "+command);
@@ -44,6 +45,7 @@ public class ADB {
     }
 
     public void uninstallApp(String packageID){
+
         command("adb -s "+ID+" uninstall "+packageID);
     }
 
@@ -56,4 +58,15 @@ public class ADB {
 
         command("adb -s "+ID+" shell pm clear "+packageID);
     }
+
+    public String getAndroidVersionAsString(){
+        String output = command("adb -s "+ID+" shell getprop ro.build.version.release");
+        if(output.length() == 3) output+=".0";
+        return output;
+    }
+
+    public int getAndroidVersion(){
+        return Integer.parseInt(getAndroidVersionAsString().replaceAll("\\.", ""));
+    }
+
 }

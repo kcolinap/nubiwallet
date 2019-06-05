@@ -25,6 +25,7 @@ public class DriverManager {
     private static String unlockPackage = "io.appium.unlock";
     private static Properties prop = new Properties();
     private static String urlNubiToConfirm = "http://tunubi.app/registration/confirm/";
+    private  static ADB adb;
 
 
     public static int EXPLICIT_WAIT_TIME;
@@ -58,7 +59,8 @@ public class DriverManager {
 
     private static DesiredCapabilities getCaps(String deviceID){
         DesiredCapabilities caps = new DesiredCapabilities();
-            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, DriverManager.PLATFORM_VERSION);
+            adb = new ADB(deviceID);
+            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, adb.getAndroidVersionAsString());
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, DriverManager.PLATFORM_NAME);
             caps.setCapability(MobileCapabilityType.APP, DriverManager.APP_NAME);
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, deviceID);

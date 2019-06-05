@@ -7,10 +7,10 @@ import core.UiSelector;
 public class DashboardUiObjects {
 
     private static UiObject
-            imgFab;
+            balanceCard;
 
-    public UiObject imgFab(){
-        if(imgFab == null)imgFab = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/addFab").makeUiObject();
-        return imgFab;
+    public UiObject balanceCard(){
+        if(balanceCard == null)balanceCard = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/balanceCard").makeUiObject();
+        return balanceCard;
     }
 }
