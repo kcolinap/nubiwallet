@@ -1,4 +1,4 @@
-package stepse2e;
+package steps;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
@@ -12,7 +12,7 @@ import core.CommonActions;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class NWE2E001RegistrationTest {
+public class E2ERegistration {
 
     private Util util = new Util();
     private CommonActions commonActions = new CommonActions();
@@ -24,22 +24,11 @@ public class NWE2E001RegistrationTest {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
-
-    @Given("That nubi wallet app is running for endToend process")
-    public void that_nubi_wallet_app_is_running() throws Exception{
-        nubiWallet.home.waitToLoad();
-    }
-
     @Test
     @When("Email screen is completed")
     public void email_screen_is_completed() throws Exception{
         try{
             boolean status, existEmail;
-            nubiWallet.home.tapLinkRegister();
-
-
-            //Email screen
-            nubiWallet.email.waitToLoad();
 
             do{
 
@@ -306,11 +295,6 @@ public class NWE2E001RegistrationTest {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    @After
-    public void afterMethod(){
-        Android.driver.resetApp();
     }
 
 }

@@ -2,7 +2,7 @@
 Feature: Login process
 
   Background:
-    Given That nubi wallet app is running for endToend process
+    Given That nubi wallet app is running and user is on home screen
     #And Home screen has been showed
 
 

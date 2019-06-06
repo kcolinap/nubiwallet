@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src\\test\\resources\\features\\regression\\F2login.feature",
-        glue = "",
+        features = "src\\test\\resources\\features\\regression\\Login.feature",
+        glue = {"steps"},
         monochrome = true
 )
-public class LoginRegexTest {
+public class LoginR {
 }

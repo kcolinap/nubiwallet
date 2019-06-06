@@ -1,4 +1,4 @@
-package stepsregex;
+package steps.stepsregex;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
@@ -22,7 +22,7 @@ public class NWRe001RegistrationTest {
 
 
     @Given("That nubi wallet app is running and user is on email screen")
-    public void userIsOnEmailScreen() throws Exception{
+    public void that_nubi_wallet_app_is_running_and_user_is_on_email_screen() {
         nubiWallet.home.waitToLoad();
         nubiWallet.home.tapLinkRegister();
 
@@ -30,7 +30,8 @@ public class NWRe001RegistrationTest {
         nubiWallet.email.waitToLoad();
     }
 
-    @When("User set an email as \"([^\"]*)\"")
+    @Test
+    @When("User set an email as {string}")
     public void user_set_an_email_as(String email) {
         try{
 
@@ -44,7 +45,7 @@ public class NWRe001RegistrationTest {
         }
     }
 
-    @Then("Validate condition on next button as \"([^\"]*)\"")
+    @Then("Validate condition on next button as {string}")
     public void validate_condition_on_next_button_as(String condition) {
         try{
             status = nubiWallet.email.uiObject.buttonNext().isEnabled();
@@ -62,7 +63,7 @@ public class NWRe001RegistrationTest {
     }
 
     @Then("Validate if legend is present as {string}")
-    public void validate_if_legend_is_present(String legend){
+    public void validate_if_legend_is_present_as(String legend) {
         try {
             if(legend.toUpperCase().contentEquals("T")){
                 status = nubiWallet.email.uiObject.labelNoValidFormat().exists();
@@ -97,7 +98,7 @@ public class NWRe001RegistrationTest {
     }
 
     @When("User set a valid email")
-    public void user_set_a_valid_email_as() {
+    public void user_set_a_valid_email() {
         try{
             boolean existEmail;
 
@@ -240,7 +241,8 @@ public class NWRe001RegistrationTest {
     }
 
     @Then("Reset app")
-    public void resetApp(){
+    public void reset_app() {
+
         commonActions.resetApp();
     }
 

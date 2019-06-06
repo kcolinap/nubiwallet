@@ -1,7 +1,8 @@
 Feature: Email screen regression test.
 
   Background:
-    Given That nubi wallet app is running and user is on email screen
+    Given That nubi wallet app is running and user is on home screen
+    And User is on email screen
    # And User is on email screen
 
   Scenario Outline: Email screen test with invalid values

@@ -1,4 +1,4 @@
-package stepsregex;
+package steps.stepsregex;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
@@ -15,14 +15,7 @@ public class NWRe002LoginTest {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
-
-    @Given("That nubi wallet app is running and user is on login screen")
-    public void that_nubi_wallet_app_is_running(){
-        //Login screen
-        nubiWallet.home.waitToLoad();
-    }
-
-
+    @Test
     @When("User set his credentials as {string} and {string}")
     public void setCredentials(String user, String pass){
         try {

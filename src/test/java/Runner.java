@@ -1,10 +1,10 @@
-package suite;
-
+import core.CommonActions;
 import core.managers.DriverManager;
-import io.appium.java_client.android.AndroidDriver;
 import org.junit.runner.JUnitCore;
-import suite.e2e.*;
-import suite.regression.*;
+import suite.e2e.Registration;
+import suite.e2e.Login;
+import suite.regression.LoginR;
+import suite.regression.RegistrationR;
 
 import java.net.MalformedURLException;
 
@@ -16,22 +16,17 @@ public class Runner {
             DriverManager.loadConfigProp("AndroidApp.properties");
             DriverManager.createDriver();
 
-
             String opt = "r";//param to filter suite
 
             switch (opt){
                 case "r":
-                    JUnitCore.runClasses(RegistrationRegex.class);
-                    JUnitCore.runClasses(LoginRegexTest.class);
-                    JUnitCore.runClasses(Registration.class);
-                    JUnitCore.runClasses(Login.class);
+                    JUnitCore.runClasses(LoginR.class);
+                    JUnitCore.runClasses(RegistrationR.class);
                     break;
                 case "e":
                     JUnitCore.runClasses(Registration.class);
                     JUnitCore.runClasses(Login.class);
                     break;
-                    default:
-                        break;
             }
 
 

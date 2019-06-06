@@ -2,11 +2,12 @@
 Feature: Registration process
 
   Background:
-    Given That nubi wallet app is running for endToend process
+    Given That nubi wallet app is running and user is on home screen
     #And Home screen has been showed
 
 
     Scenario: Complete full registration process
+      Given User is on email screen
       When Email screen is completed
      And Personal information screen is completed
      And Create user screen is completed

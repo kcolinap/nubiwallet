@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src\\test\\resources\\features\\e2e\\E2login.feature"},
-        glue = {"stepsregex"},
+        features = {"src\\test\\resources\\features\\e2e\\Login.feature"},
+        glue = {"steps"},
         tags = "@e2e",
         monochrome = true
 )

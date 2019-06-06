@@ -2,7 +2,7 @@
 Feature: Login process
 
   Background:
-    Given That nubi wallet app is running and user is on login screen
+    Given That nubi wallet app is running and user is on home screen
     #And Home screen has been showed
 
 
@@ -10,6 +10,7 @@ Feature: Login process
     When User set his credentials as "<user>" and "<password>"
     Then Validate condition on init session button as "<condition>"
     Then Validate if legend is present as "<legend>"
+    Then Reset app
     Examples:
       |             user      |       password    |   condition   |   legend  |
       |                       |     111Cc-c11     |     false     |     f     |

@@ -1,4 +1,4 @@
-package stepse2e;
+package steps;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
@@ -9,9 +9,8 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class NWE2E002LoginTest {
+public class E2ELogin {
 
-    private Util util = new Util();
     private CommonActions commonActions = new CommonActions();
 
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
