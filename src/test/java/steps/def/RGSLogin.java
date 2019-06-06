@@ -1,3 +1,5 @@
+package steps.def;
+
 import api.android.Android;
 import api.apps.nw.NubiWallet;
 import cucumber.api.java.en.Then;
@@ -43,20 +45,5 @@ public class RGSLogin {
             e.printStackTrace();
         }
 
-    }
-
-    @Then("Validate if legend is present as {string}")
-    public void validate_if_legend_is_present(String legend){
-        try {
-            if(legend.toUpperCase().contentEquals("T")){
-                nubiWallet.home.tapInitSession();
-                Thread.sleep(300);
-                status = nubiWallet.home.uiObject.lblWrongData().exists();
-                Thread.sleep(300);
-                Assert.assertEquals(true, status);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }

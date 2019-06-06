@@ -8,7 +8,7 @@ Feature: Email screen regression test.
   Scenario Outline: Email screen test with invalid values
     When User set an email as "<email>"
     Then Validate condition on next button as "<condition>"
-    Then Validate if legend is present as "<legend>"
+    Then Validate if legend is present as "<legend>" on screen "email"
     Then Reset app
     Examples:
     |      email      |   condition   |   legend  |

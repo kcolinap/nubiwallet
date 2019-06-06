@@ -1,4 +1,4 @@
-package steps;
+package steps.def;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
@@ -47,19 +47,6 @@ public class RGSRegistration {
                 Assert.assertEquals(false, status);
             }
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @Then("Validate if legend is present as {string}")
-    public void validate_if_legend_is_present_as(String legend) {
-        try {
-            if(legend.toUpperCase().contentEquals("T")){
-                status = nubiWallet.email.uiObject.labelNoValidFormat().exists();
-                Thread.sleep(300);
-                Assert.assertEquals(true, status);
-            }
         }catch (Exception e){
             e.printStackTrace();
         }

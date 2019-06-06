@@ -1,4 +1,4 @@
-package steps;
+package steps.def;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;

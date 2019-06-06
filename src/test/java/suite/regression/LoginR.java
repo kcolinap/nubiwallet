@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src\\test\\resources\\features\\regression\\Login.feature",
-        glue = {"steps"},
+        glue = {"steps/def"},
         monochrome = true
 )
 public class LoginR {

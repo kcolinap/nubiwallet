@@ -9,7 +9,7 @@ Feature: Login process
   Scenario Outline: Login screen test with invalid values
     When User set his credentials as "<user>" and "<password>"
     Then Validate condition on init session button as "<condition>"
-    Then Validate if legend is present as "<legend>"
+    Then Validate if legend is present as "<legend>" on screen "home"
     Then Reset app
     Examples:
       |             user      |       password    |   condition   |   legend  |
