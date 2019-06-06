@@ -1,11 +1,9 @@
-package stepdefinitions.regression;
+package stepsregex;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
 import core.CommonActions;
 import core.Util;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,10 +20,9 @@ public class NWRe001RegistrationTest {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
-    @Test
+
     @Given("That nubi wallet app is running and user is on email screen")
-    public void that_nubi_wallet_app_is_running() throws Exception{
-        System.out.println("opening nubi wallet app");
+    public void userIsOnEmailScreen() throws Exception{
         nubiWallet.home.waitToLoad();
         nubiWallet.home.tapLinkRegister();
 
@@ -47,7 +44,6 @@ public class NWRe001RegistrationTest {
         }
     }
 
-
     @Then("Validate condition on next button as \"([^\"]*)\"")
     public void validate_condition_on_next_button_as(String condition) {
         try{
@@ -63,7 +59,6 @@ public class NWRe001RegistrationTest {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     @Then("Validate if legend is present as {string}")

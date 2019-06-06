@@ -1,4 +1,4 @@
-package stepdefinitions.endtoend;
+package stepse2e;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
@@ -7,6 +7,7 @@ import core.Util;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import org.junit.Test;
 
 public class NWE2E002LoginTest {
 
@@ -15,6 +16,8 @@ public class NWE2E002LoginTest {
 
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
+
+    @Test
     @When("User set its credential to acces nubi wallet")
     public void setCredentials(){
         try{

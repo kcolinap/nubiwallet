@@ -9,9 +9,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src\\test\\resources\\features\\e2e\\F1registration.feature",
-        glue = "stepdefinitions\\endtoend\\",
-        strict = true,
+        features = "src\\test\\resources\\features\\e2e\\E1registration.feature",
+        glue = "stepse2e",
         monochrome = true
 )
 public class Registration {

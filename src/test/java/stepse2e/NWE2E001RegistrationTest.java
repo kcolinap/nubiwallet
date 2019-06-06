@@ -1,18 +1,15 @@
-package stepdefinitions.endtoend;
+package stepse2e;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
 import core.Util;
 import core.managers.DriverManager;
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import core.CommonActions;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class NWE2E001RegistrationTest {
@@ -30,7 +27,6 @@ public class NWE2E001RegistrationTest {
 
     @Given("That nubi wallet app is running for endToend process")
     public void that_nubi_wallet_app_is_running() throws Exception{
-        //nubiWallet.open();
         nubiWallet.home.waitToLoad();
     }
 
