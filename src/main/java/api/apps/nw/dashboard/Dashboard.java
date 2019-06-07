@@ -7,7 +7,6 @@ public class Dashboard implements Activity {
 
     public DashboardUiObjects uiObject = new DashboardUiObjects();
 
-    //at this moment, misaldo container has not id, so, for now , we waito for another element on dashboard screen
     @Override
     public Dashboard waitToLoad() {
         try{

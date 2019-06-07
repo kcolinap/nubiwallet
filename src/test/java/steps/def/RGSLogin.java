@@ -32,18 +32,30 @@ public class RGSLogin {
     @Then("Validate condition on init session button as {string}")
     public void validate_condition_on_next_button_as(String condition) {
         try{
-            status = nubiWallet.home.uiObject.btnInitSession().isEnabled();
-            Thread.sleep(300);
+            Thread.sleep(500);
 
-            if(condition.toUpperCase().contentEquals("TRUE")){
-                Assert.assertEquals(true, status);
-            }else{
-                Assert.assertEquals(false, status);
-            }
+
+            boolean status = (condition.toUpperCase().contentEquals("TRUE")) ? nubiWallet.home.uiObject.btnInitSession().isEnabled() :
+                    nubiWallet.home.uiObject.btnInitSession().isEnabled();
+            if(status)
+                Assert.assertTrue(status);
+            else
+                Assert.assertFalse(status);
+
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
+    }
+
+    @Then("User tap init session button")
+    public void user_tap_init_session_button(){
+        try {
+            nubiWallet.home.tapInitSession();
+            Thread.sleep(150);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

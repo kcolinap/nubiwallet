@@ -38,13 +38,13 @@ public class CommonSteps {
             if(legend.toUpperCase().contentEquals("T")){
                 if (screen.toUpperCase().contentEquals("HOME")){
                     nubiWallet.home.tapInitSession();
-                    Thread.sleep(300);
-                    status = nubiWallet.home.uiObject.lblWrongData().exists();
+                    Thread.sleep(150);
+                    nubiWallet.home.uiObject.lblWrongData().waitToAppear(10);
+                    Assert.assertTrue(nubiWallet.home.uiObject.lblWrongData().exists());
                 }else if (screen.toUpperCase().contentEquals("EMAIL")){
-                    status = nubiWallet.email.uiObject.labelNoValidFormat().exists();
+                    nubiWallet.email.uiObject.labelNoValidFormat().waitToAppear(10);
+                    Assert.assertTrue(nubiWallet.email.uiObject.labelNoValidFormat().exists());
                 }
-                Thread.sleep(300);
-                Assert.assertEquals(true, status);
             }
         }catch (Exception e){
             e.printStackTrace();

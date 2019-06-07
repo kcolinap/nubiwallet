@@ -22,7 +22,7 @@ Feature: Email screen regression test.
   Scenario: Email screen test with email more tha 255characteres
     When User set an email with more than permit characteres
     Then Validate condition on next button as "false"
-    Then Validate if legend is present as "t"
+    Then Validate if legend is present as "t" on screen "email"
     Then Reset app
 
   Scenario: Email screen test with a valid email

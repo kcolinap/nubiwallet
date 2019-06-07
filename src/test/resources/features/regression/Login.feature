@@ -21,6 +21,16 @@ Feature: Login process
       |demotest31@yopmail.com |     122Cc-c11     |      true     |    t      |
 
 
+  Scenario Outline: Login screen test with correct values
+    When User set his credentials as "<user>" and "<password>"
+    Then Validate condition on init session button as "<condition>"
+    Then User tap init session button
+    Then User sees dashboard screen
+    Then Reset app
+    Examples:
+      |     user      |       password    |   condition   |
+      |    userdt31   |      111Cc-11     |     true      |
+
 #    When User set its credential to acces nubi wallet
 #    Then User sees dashboard screen
 #      Then User sees the welcome screen with its name e2e. this is failing at tihis moment 31-05-2019

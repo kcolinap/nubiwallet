@@ -36,6 +36,7 @@ public class DriverManager {
     private static String APPIUM_PORT;
     public static String PLATFORM_NAME;
     public static String PLATFORM_VERSION;
+    public static String AUTOMATION_NAME;
     public static String DEVICE_NAME;
 
 
@@ -53,6 +54,7 @@ public class DriverManager {
         PLATFORM_NAME = prop.getProperty("platform.name");
         //DEVICE_NAME = prop.getProperty("device.name");
         PLATFORM_VERSION = prop.getProperty("platform.version");
+        AUTOMATION_NAME = prop.getProperty("automationName");
 
 
     }
@@ -62,6 +64,7 @@ public class DriverManager {
             adb = new ADB(deviceID);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, adb.getAndroidVersionAsString());
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, DriverManager.PLATFORM_NAME);
+            caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, DriverManager.AUTOMATION_NAME);
             caps.setCapability(MobileCapabilityType.APP, DriverManager.APP_NAME);
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, deviceID);
         return caps;
