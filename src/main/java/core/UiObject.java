@@ -1,6 +1,7 @@
 package core;
 
 import api.android.Android;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
@@ -30,9 +31,9 @@ public class UiObject {
     }
 
     public boolean isChecked(){
-        WebElement element;
-        if(isXpath()) element = Android.driver.findElementByXPath(locator);
-        else element = Android.driver.findElementByAndroidUIAutomator(locator);
+        MobileElement element;
+        if(isXpath()) element = (MobileElement)Android.driver.findElementByXPath(locator);
+        else element = (MobileElement) Android.driver.findElementByAndroidUIAutomator(locator);
         return element.getAttribute("checked").equals("true");
     }
 
@@ -51,9 +52,9 @@ public class UiObject {
     }
 
     public boolean isEnabled(){
-        WebElement element;
-        if(isXpath()) element = Android.driver.findElementByXPath(locator);
-        else element = Android.driver.findElementByAndroidUIAutomator(locator);
+        MobileElement element;
+        if(isXpath()) element = (MobileElement)Android.driver.findElementByXPath(locator);
+        else element = (MobileElement)Android.driver.findElementByAndroidUIAutomator(locator);
         return element.getAttribute("enabled").equals("true");
     }
 
@@ -134,8 +135,14 @@ public class UiObject {
     }
 
     public UiObject typeText(String value){
-        if(isXpath()) Android.driver.findElementByAndroidUIAutomator(locator).sendKeys(value);
-        else  Android.driver.findElementByAndroidUIAutomator(locator).sendKeys(value);
+        MobileElement element;
+        if(isXpath()){
+            element = (MobileElement)Android.driver.findElementByXPath(locator);
+            element.sendKeys(value);
+        }else{
+            element = (MobileElement)Android.driver.findElementByAndroidUIAutomator(locator);
+            element.sendKeys(value);
+        }
         return this;
     }
 

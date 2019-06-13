@@ -10,7 +10,7 @@ public class Dashboard implements Activity {
     @Override
     public Dashboard waitToLoad() {
         try{
-            uiObject.balanceCard().waitToAppear(20);
+            uiObject.balance().waitToAppear(10);
             return Android.app.nubiWallet.dashboard;
         }catch (AssertionError e){
             throw new AssertionError("Dashboard activity failed to load/open");

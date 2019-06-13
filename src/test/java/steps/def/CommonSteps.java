@@ -6,6 +6,7 @@ import core.CommonActions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 public class CommonSteps {
@@ -14,6 +15,7 @@ public class CommonSteps {
     private static NubiWallet nubiWallet = Android.app.nubiWallet;
 
 
+    @Then("validate user is on login screen")
     @Given("That nubi wallet app is running and user is on home screen")
     public void that_nubi_wallet_app_is_running() throws Exception{
         nubiWallet.home.waitToLoad();
@@ -44,6 +46,12 @@ public class CommonSteps {
                 }else if (screen.toUpperCase().contentEquals("EMAIL")){
                     nubiWallet.email.uiObject.labelNoValidFormat().waitToAppear(10);
                     Assert.assertTrue(nubiWallet.email.uiObject.labelNoValidFormat().exists());
+                }else if(screen.toUpperCase().contentEquals("PERSONALINF")){
+                    nubiWallet.personalInformation.uiObject.lblInputError().waitToAppear(10);
+                    Assert.assertTrue(nubiWallet.personalInformation.uiObject.lblInputError().exists());
+                }else if(screen.toUpperCase().contentEquals("USERINF")){
+                    nubiWallet.userInformation.uiObject.lblError().waitToAppear(10);
+                    Assert.assertTrue(nubiWallet.userInformation.uiObject.lblError().exists());
                 }
             }
         }catch (Exception e){
@@ -51,8 +59,48 @@ public class CommonSteps {
         }
     }
 
+    @And("user close the app")
+    @When("user kill-close the app")
+    public void user_kill_close_the_app() {
+        commonActions.closeApp();
+        nubiWallet.clearData();
+    }
+
     @Then("Reset app")
     public void reset_app() {
         commonActions.resetApp();
+    }
+
+    @Then("open the app")
+    public void open_the_app() {
+        nubiWallet.open();
+    }
+
+    @Then("Validate status circle button as {string}")
+    public void validate_status_circle_button(String condition){
+        try {
+
+            Thread.sleep(400);
+            if(condition.toUpperCase().contentEquals("F")){
+                Assert.assertFalse(nubiWallet.personalInformation.uiObject.btnCirclenext().isEnabled());
+            }else if(condition.toUpperCase().contentEquals("T")){
+                Assert.assertTrue(nubiWallet.personalInformation.uiObject.btnCirclenext().isEnabled());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @And("tap button circle on screen {string}")
+    public void tap_circle_button(String screen){
+        try {
+            if(screen.toLowerCase().contentEquals("user")){
+                nubiWallet.userInformation.tapCircleButton();
+            }
+
+            Thread.sleep(200);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

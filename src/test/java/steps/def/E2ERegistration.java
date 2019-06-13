@@ -7,6 +7,7 @@ import core.managers.DriverManager;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import core.CommonActions;
 import org.junit.Assert;
@@ -25,6 +26,7 @@ public class E2ERegistration {
 
 
     @Test
+    @And("User complete email screen")
     @When("Email screen is completed")
     public void email_screen_is_completed() throws Exception{
         try{
@@ -44,15 +46,17 @@ public class E2ERegistration {
             status = nubiWallet.email.isEnabledNextButton();
             Assert.assertEquals(true, status);
 
-            boolean isButtonNextPresent;
+            boolean isButtonNextPresent = false;
             do{
-                nubiWallet.email.tapButtonNext();
-                Thread.sleep(600);
-                isButtonNextPresent = nubiWallet.email.uiObject.buttonNext().exists();
+                try {
+                    nubiWallet.email.tapButtonNext();
+                    nubiWallet.email.uiObject.buttonNext().waitToDisappear(5);
+                    isButtonNextPresent = nubiWallet.email.uiObject.buttonNext().exists();
+                }catch (Exception e){
+                    continue;
+                }
             }while (isButtonNextPresent);
 
-
-            Thread.sleep(300);
             //////////////////////////////////////////////////////////
 
             //Confirm email screen

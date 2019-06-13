@@ -9,6 +9,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.FileInputStream;
@@ -67,6 +68,9 @@ public class DriverManager {
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, DriverManager.AUTOMATION_NAME);
             caps.setCapability(MobileCapabilityType.APP, DriverManager.APP_NAME);
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, deviceID);
+            caps.setCapability("ignoreUnimportantViews", true);
+            caps.setCapability("disableAndroidWatchers", true);
+            caps.setCapability("disableAndroidWatchers", true);
         return caps;
     }
 

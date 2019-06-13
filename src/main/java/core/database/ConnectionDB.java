@@ -34,6 +34,8 @@ public class ConnectionDB {
                     db = properties.getProperty("dbUsers");
                 }else if(db.contentEquals("registration")){
                     db = properties.getProperty("dbRegistration");
+                }else if(db.contentEquals("auth")){
+                    db = properties.getProperty("dbAuth");
                 }
 
                 user = properties.getProperty("user");

@@ -29,7 +29,7 @@ Feature: Login process
     Then Reset app
     Examples:
       |     user      |       password    |   condition   |
-      |    userdt31   |      111Cc-11     |     true      |
+      |    user2605   |      n$65d1kU     |     true      |
 
 #    When User set its credential to acces nubi wallet
 #    Then User sees dashboard screen

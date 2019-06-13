@@ -9,7 +9,8 @@ public class DashboardUiObjects {
     private static UiObject
             balanceCard,
             balanceCardTitle,
-            frequentContactContainer;
+            frequentContactContainer,
+            balance;
 
     public UiObject balanceCard(){
         if(balanceCard == null)balanceCard = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/balanceCard").makeUiObject();
@@ -24,5 +25,10 @@ public class DashboardUiObjects {
     public UiObject frequentContactContainer(){
         if(frequentContactContainer == null)frequentContactContainer = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/frequentContactsContent").makeUiObject();
         return frequentContactContainer;
+    }
+
+    public UiObject balance(){
+        if(balance == null)balance = new UiSelector().resourceId(Android.app.nubiWallet.packageID()+":id/balance").makeUiObject();
+        return balance;
     }
 }

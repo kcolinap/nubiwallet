@@ -65,6 +65,10 @@ public class ADB {
         return output;
     }
 
+    public void settext(String text){
+        command("adb -s "+ID+" shell input text "+text);
+    }
+
     public int getAndroidVersion(){
         return Integer.parseInt(getAndroidVersionAsString().replaceAll("\\.", ""));
     }

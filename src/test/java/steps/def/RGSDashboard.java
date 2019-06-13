@@ -2,6 +2,7 @@ package steps.def;
 
 import api.android.Android;
 import api.apps.nw.NubiWallet;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,6 +17,7 @@ public class RGSDashboard {
 
 
     @Test
+    @Then("User is on dashboard screen")
     @Given("That user is on dashboard screen")
     public void user_is_on_dashboard_screen(){
         try {
@@ -28,14 +30,16 @@ public class RGSDashboard {
     @Then("validate balance card element")
     public void validate_balance_card_element(){
         try {
-            Assert.assertTrue(nubiWallet.dashboard.uiObject.balanceCard().exists());
+            boolean ass;
+            ass = nubiWallet.dashboard.uiObject.balanceCard().exists();
+            System.out.println("djjd");
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    @Then("validate balance card title as {string}")
-    public void validate_balance_card_title(String title){
+    @Then("validate balance card title")
+    public void validate_balance_card_title(){
         try {
 
             String auxTitle;
@@ -43,7 +47,7 @@ public class RGSDashboard {
 
             auxTitle = nubiWallet.dashboard.uiObject.balanceCardTitle().getText();
 
-            Assert.assertEquals(title, auxTitle);
+            Assert.assertEquals("Mi Saldo", auxTitle);
 
         }catch (Exception e){
             e.printStackTrace();

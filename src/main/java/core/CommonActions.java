@@ -79,6 +79,24 @@ public class CommonActions {
         return true;
     }
 
+   /*******
+            *  VALIDATE IF USER EXIST ON BD
+     ******/
+    public String returnUser(){  //return an user from auth data base
+
+        String aux = "";
+        try {
+
+            query = "SELECT username FROM login_credentials limit 1";
+            aux = util.simpleQuery(query, "username", "auth");
+
+        }catch (Exception e){
+          e.printStackTrace();
+        }
+
+        return aux;
+    }
+
     /*****
      *   VALIDATE IF PHONE NUMBER EXIST ON BD
      *****/
@@ -190,6 +208,17 @@ public class CommonActions {
             Android.driver.resetApp();
         }catch (Exception e){
             System.out.println("Unable to reset the app");
+        }
+    }
+
+    /*****
+     * CLOSE APP
+     */
+    public void closeApp(){
+        try {
+            Android.driver.closeApp();
+        }catch (Exception e){
+            System.out.println("Unable to close the app");
         }
     }
 }

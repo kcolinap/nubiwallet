@@ -3,7 +3,7 @@ Feature: Email screen regression test.
   Background:
     Given That nubi wallet app is running and user is on home screen
     And User is on email screen
-   # And User is on email screen
+
 
   Scenario Outline: Email screen test with invalid values
     When User set an email as "<email>"
@@ -63,7 +63,19 @@ Feature: Email screen regression test.
     And Click on next button
     Then Validate that newest setted email is show
     Then Reset app
+
+  Scenario: Validate an already registered email
+    When user set an already registered email as "nwtest4254@yopmail.com"
+    And Click on next button
+    Then validate message already registered as "Ya estás registrado"
+    Then Reset app
 #
+
+
+
+
+
+
 #  Scenario: open  and confirm email test
 #    #Given That nubi wallet app is running
 #    When User set a valid email

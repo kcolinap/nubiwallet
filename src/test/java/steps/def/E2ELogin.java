@@ -23,9 +23,9 @@ public class E2ELogin {
             nubiWallet.home.waitToLoad();
 
             //Set user
-            nubiWallet.home.setUser("userdt31");
+            nubiWallet.home.setUser("user2605");
 
-            nubiWallet.home.setPassword("111Cc-11");
+            nubiWallet.home.setPassword("n$65d1kU");
 
             commonActions.hideKeyBoard();
 
