@@ -5,10 +5,11 @@ Feature: phone number validation feature
     And User is on email screen
     And User complete email screen
     And Personal information screen is completed
+    And Create user screen is completed
 
 
   Scenario Outline: complete screen with invalid information
-    Given User is on user information screen
+    Given User is on phone number screen
     When user set his user as "<user>"
     And set his password as "<pass>"
     Then Validate status circle button as "<condition>"
